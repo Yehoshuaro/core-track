@@ -50,7 +50,7 @@ class RoyalHomePage extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'What is the CoreTrack application? ...',
+                      'What is the CoreTrack application?',
                       style: TextStyle(fontSize: 18),
                     ),
                     SizedBox(height: 20),

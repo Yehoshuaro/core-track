@@ -34,7 +34,7 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   path_provider: ^2.1.2
-  # UI
+  # path_provider: ^2.0.15
   flutter_riverpod: ^2.5.1
   fl_chart: ^0.63.0
 
