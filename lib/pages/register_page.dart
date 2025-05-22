@@ -27,17 +27,41 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Register")),
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(controller: emailController, decoration: InputDecoration(labelText: "Email")),
-            TextField(controller: passwordController, obscureText: true, decoration: InputDecoration(labelText: "Password")),
-            SizedBox(height: 20),
-            ElevatedButton(onPressed: () => registerUser(context), child: Text("Register")),
-            TextButton(onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginPage())), child: Text("Already have an account? Login")),
-          ],
+      backgroundColor: Color(0xFF002366),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Container(
+            padding: EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: Colors.white24,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text("Register", style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold)),
+                SizedBox(height: 20),
+                TextField(
+                  controller: emailController,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(labelText: "Email", labelStyle: TextStyle(color: Colors.white)),
+                ),
+                TextField(
+                  controller: passwordController,
+                  obscureText: true,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(labelText: "Password", labelStyle: TextStyle(color: Colors.white)),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(onPressed: () => registerUser(context), child: Text("Register")),
+                TextButton(
+                  onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginPage())),
+                  child: Text("Already have an account? Login", style: TextStyle(color: Colors.white)),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
