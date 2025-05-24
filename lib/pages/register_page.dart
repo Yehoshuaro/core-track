@@ -1,26 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void registerUser(BuildContext context) {
+  void registerUser(BuildContext context) async {
     final email = emailController.text.trim();
     final password = passwordController.text;
-    final box = Hive.box('users');
 
     if (email.isNotEmpty && password.isNotEmpty) {
-      if (box.containsKey(email)) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("User already exists")));
-      } else {
-        box.put(email, password);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Registered successfully")));
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginPage()));
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Registered successfully")),
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => LoginPage()),
+        );
+      } on FirebaseAuthException catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Error: ${e.message}")),
+        );
       }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Fill all fields")));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Fill all fields")),
+      );
     }
   }
 
@@ -40,7 +51,8 @@ class RegisterPage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text("Register", style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold)),
+                Text("Register",
+                    style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold)),
                 SizedBox(height: 20),
                 TextField(
                   controller: emailController,

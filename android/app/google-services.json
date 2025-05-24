@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "822365278847",
+    "project_id": "coretrack-3b51c",
+    "storage_bucket": "coretrack-3b51c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822365278847:android:2d8e577c7be607e6eee54a",
+        "android_client_info": {
+          "package_name": "com.example.core_track_two"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVImo6yQ7ekcNa09ZcRXr3-lIIdEZecig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
